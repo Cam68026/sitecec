@@ -1,0 +1,280 @@
+/* Reset du CSS de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    background-color: #f4f4f9;
+    line-height: 1.6;
+}
+
+/* Styles pour l'en-tête */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    z-index: 1000
+}
+
+.header-offset, .equipe-offset, .voiture-offset, .strategie-offset, .gallerie-offset, .event-offset, .sponsors-offset, .contact-offset {
+    height: 100px;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #00bfff;
+}
+
+/* Section principale */
+main {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Sytles de sections */
+section {
+    margin-bottom: 3rem;
+}
+
+section h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #00bfff;
+    padding-bottom: 0.5rem;
+}
+
+section p, section ul, section.member {
+    margin-bottom: 1rem;
+}
+
+/* Styles pour l'équipe */
+#equipe {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.team-member {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.team-member img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    object-fit: cover;
+}
+
+.team-member h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin: 0.5rem 0;
+}
+
+.team-member p {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* Styles pour le fond sombre */
+.modal-overlay {
+    display: none; /* Cache par défaut */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Couleur sombre avec transparence */
+    z-index: 999; /* Assure que c'est en dessous du modal */
+}
+
+/* Styles de base pour le modal */
+.modal {
+    display: none; /* Cache par défaut */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000; /* Assure que c'est au-dessus de l'overlay */
+    width: 80%;
+    max-width: 500px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Rendre visible le fond sombre lorsque le modal est ouvert */
+.modal.show + .modal-overlay {
+    display: block; /* Montre l'overlay */
+}
+
+/* Bouton de fermeture */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.close:hover {
+    color: #333;
+}
+
+/* Image de profil dans le modal */
+.modal-content img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    object-fit: cover;
+}
+
+/* Style pour Section voiture */
+.voiture img {
+    width: 750px;
+    height: 550px;
+}
+
+/* Styles pour la galerie */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.gallery img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 8px;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* Formulaire de contact */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+form input, form textarea {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+}
+
+form button {
+    margin-top: 1rem;
+    padding: 0.7rem;
+    background-color: #00bfff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+form button:hover {
+    background-color: #008ecc;
+}
+
+/* Pied de page */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer div {
+    word-spacing: 8px;
+}
+
+.fab.fa-facebook, .fab.fa-tiktok, .fab.fa-instagram {
+    text-decoration: none;
+    color: #fff;
+    text-size-adjust: 30%;
+}
+
+.fab.fa-facebook:hover, .fab.fa-tiktok:hover, .fab.fa-instagram:hover {
+    color: #00bfff;
+    transform: scale(1.25);
+    transition: color 0.2s ease, transform 0.2s ease;
+} 
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction:column;
+    }
+
+    .gallery {
+        justify-content: center;
+    }
+}

@@ -1,0 +1,794 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #000;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0px;
+}
+
+body .contenu {
+    margin: 20px 80px;
+}
+
+/* Toutes les sections sont masquées par défaut */
+header, section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Section active : affichée */
+header.active, section.active {
+    display: block;
+    opacity: 1;
+}
+
+header p.description {
+    text-align: left;
+    margin: 50px;
+}
+
+header div.img_header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav div {
+    display: flex;
+    flex-wrap: wrap;
+    position: fixed;
+    top: 0;
+    background-color: #000;
+    padding: 10px 0px;
+    padding-left: 40px;
+    z-index: 1000;
+    width: 100%;
+}
+
+nav .onglets {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+nav .onglets a {
+    text-decoration: none;
+    color: #837e83;
+    margin-right: 30px;
+    margin-top: 10px;
+}
+
+nav .onglets a:hover {
+    color: #fff;
+    transform: scale(1.25);
+    transform: color 0.2s ease, transform 0.2s ease;
+}
+
+header {
+    color: #fff;
+    padding-top: 40px;
+    background-image: url('../images/fond_de_site.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 45px;
+    padding: 150px;
+}
+
+section {
+    color: #fff;
+    padding-top: 40px;
+}
+
+section.equipe {
+    padding: 60px 20px;
+    background: linear-gradient(to bottom, #f9f9f9);
+}
+
+div.header-equipe {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header-equipe .titre {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.header-equipe .sous-titre {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-top: 10px;
+}
+
+/* Filtres */
+.filtres {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.filtre {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 25px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: #fff;
+    background: #5a85b0;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.filtre.actif {
+    transform: scale(1.25);
+    transition: transform 0.3s ease;
+}
+
+.filtre:hover {
+    color: inherit;
+    transform: scale(1.25);
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* Grille */
+.equipe-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+/* Carte membre */
+.carte-membre {
+    perspective: 1000px; /* Perspective pour effet 3D */
+    width: 300px;
+    height: 275px;
+    position: relative;
+}
+
+.contenu-carte-equipe {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out; /* Transition fluide pour la rotation */
+}
+
+.carte-membre:hover .contenu-carte-equipe {
+    transform: rotateY(180deg);
+}
+
+/* Faces de la carte */
+.carte-membre .face-avant, .carte-membre .face-arriere {
+    width: 100%; /* Correspond à .carte-membre */
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    background: #1e1e1e;
+    flex-direction: column;
+}
+
+.carte-membre .face-arriere {
+    transform: rotateY(180deg); /* Position initiale */
+    backface-visibility: hidden; /* Cache quand elle est derrière */
+}
+
+/* A propos */
+.carte-membre .face-arriere h3 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+    color: #ddd;
+}
+
+.carte-membre .face-arriere p {
+    font-size: 0.9rem;
+    color: #909090;
+    line-height: 1.5;
+    margin: 10px;
+}
+
+.photo-membre {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.nom {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.role {
+    font-size: 0.9rem;
+    color: #909090;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.role_nadege {
+    margin-left: 60px;
+    color: #909090;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* --- Section de la voiture --- */
+#section-voiture {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Conteneur principal */
+.container-voiture {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Image de la voiture */
+.modele-voiture {
+    width: 70%;
+    max-width: 600px;
+    perspective: 1000px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.voiture-img {
+    width: 100%;
+    transition: transform 0.8s ease-in-out, opacity 0.5s ease;
+    transform-origin: center;
+}
+
+/* Options interactives */
+.options-voiture {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-option {
+    padding: 10px 20px;
+    background-color: #333;
+    border: 2px solid #555;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-option:hover {
+    background-color: #555;
+}
+
+/* Effets de rotation */
+[data-angle="avant"] ~ .modele-voiture .voiture-img {
+    transform: rotateY(0deg);
+}
+
+[data-angle="arriere"] ~ .modele-voiture .voiture-img {
+    transform: rotateY(180deg);
+}
+
+/* Section Actualités */
+article.article {
+    background: #1e1e1e;
+    border-radius: 15px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+
+article .titre_article {
+    margin-top: 0px;
+    margin-left: 0px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+article div.div_article {
+    margin-top: 30px;
+}
+
+article div.div_article_description {
+    height: 310px;
+    width: 300px;
+}
+
+article .description_article {
+    margin: 0px 0px;
+    margin-bottom: 10px;
+    padding-left: 25px;
+}
+
+article div.div_article {
+    width: 250px;
+    right: 0px;
+    bottom: 0px;
+}
+
+article img.image_article {
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+article p.description_article_image {
+    margin-left: 0px;
+    padding-bottom: 10px;
+}
+
+#modal-article {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    width: 800px; /* Plus large pour le mode paysage */
+    color: #fff;
+    text-align: left;
+    display: flex; /* Active le mode flexbox */
+    justify-content: space-between; /* Espace entre les deux colonnes */
+    align-items: flex-start; /* Aligne les deux sections en haut */
+}
+
+.modal-content > div {
+    flex: 1; /* Chaque section prend un espace égal */
+    margin: 0 10px; /* Espacement horizontal entre les sections */
+}
+
+.modal-content input,
+.modal-content textarea {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #2b2b2b;
+    color: #fff;
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ccc;
+}
+
+#aperçu-article {
+    margin: 0;
+    background: #2b2b2b;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0px 30px;
+    margin-right: 15px;
+    flex: 1.5; /* L'aperçu est plus large que le menu */
+}
+
+#aperçu-article img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#aperçu-article .titre_article {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+#aperçu-article .description_article {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+#aperçu-article .description_article_image {
+    font-size: 0.9em;
+    color: #aaa;
+}
+
+button#publier-article {
+    background: green;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 7px;
+    margin-right: 10px;
+    color: #fff;
+}
+
+button#fermer-modal {
+    background: red;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 7px;
+    color: #fff;
+}
+
+button.supprimer-article {
+    height: 20px;
+}
+
+/* Section Sponsors */
+.sponsors-section {
+    padding: 60px 20px;
+    background: linear-gradient(to bottom, #333);
+    text-align: center;
+}
+  
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #fff;
+}
+  
+.section-description {
+    font-size: 1.2rem;
+    color: #837e83;
+    margin-bottom: 40px;
+}
+  
+/* Grid Sponsors */
+.sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+  
+/* Sponsor Card */
+.sponsor-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #fff;
+}
+  
+.sponsor-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+  
+/* Logo Container */
+.sponsor-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    background: #2e2e2e;
+}
+  
+.sponsor-logo {
+    max-width: 100%;
+    max-height: 150px;
+    object-fit: contain;
+}
+  
+/* Overlay Effect */
+.sponsor-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.sponsor-card:hover .sponsor-overlay {
+    transform: translateY(0);
+}
+  
+/* Text Styles in Overlay */
+.sponsor-name {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+  
+.sponsor-description {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+  
+.sponsor-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ff6a00;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+  
+.sponsor-link:hover {
+    background: #e85b00;
+}  
+
+/* Section FAQs */
+section.faq {
+    padding: 60px 20px;
+    background: linear-gradient(to bottom, #f9f9f9);
+}
+
+div.header-faq {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header-faq .titre {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.header-faq .sous-titre {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-top: 10px;
+}
+
+div.faq-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.carte-faq {
+    perspective: 1000px;
+    width: 300px;
+    height: 275px;
+    position: relative;
+}
+
+.contenu-carte-faq {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
+}
+
+.carte-faq:hover .contenu-carte-faq {
+    transform: rotateY(180deg);
+}
+
+.carte-faq .face-avant, .carte-faq .face-arriere {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    background: #1e1e1e;
+    flex-direction: column;
+}
+
+.carte-faq .face-arriere {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+
+.carte-faq .face-arriere h3 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+    color: #ddd;
+}
+
+.carte-faq .face-arriere p {
+    font-size: 0.9rem;
+    color: #909090;
+    line-height: 1.5;
+    margin: 10px;
+}
+
+footer {
+    background-color: #1a1a1a;
+    padding: 25px 100px;
+    color: #828282;
+    position: relative;
+}
+
+footer .colonnes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+footer .colonne {
+    flex-direction: column;
+    max-width: 200px;
+}
+
+footer.colonne img {
+    margin-top: 20px;
+}
+
+footer .colonne a {
+    color: #828282;
+    text-decoration: none;
+}
+
+footer .colonne h6 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+footer .colonne img {
+    margin-top: 5px;
+}
+
+footer .colonne h6:hover {
+    color: #fff;
+    transform: scale(1.25); /* 125% correspond à 1.25 */
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+footer .raccourcis {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 97%;
+    padding: 5px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+footer .fab.fa-facebook, .fab.fa-tiktok, .fab.fa-instagram, .fa-regular.fa-envelope {
+    text-decoration: none;
+    color: #828282;
+    size-adjust: 30%;
+}
+
+footer .raccourcis span {
+    margin: 0px 10px;
+}
+
+.fab.fa-facebook:hover, .fab.fa-instagram:hover, .fab.fa-tiktok:hover {
+    color: #fff;
+    transform: scale(1.25);
+    transition: color 0.2s ease, transform 0.2s ease;
+} 
+
+.fa-regular.fa-envelope {
+    position: relative; /* Pour positionner la pseudo-classe ::before */
+}
+
+.fa-regular.fa-envelope::before {
+    content: "\f0e0"; /* Code unicode de l'icône "regular" */
+    font-family: "Font Awesome 6 Free"; /* Nom de la police Font Awesome */
+    font-weight: 400; /* Style "regular" */
+}
+
+.fa-regular.fa-envelope:hover::before {
+    content: "\f003"; /* Code unicode de l'icône "solid" */
+    font-weight: 700; /* Style "solid" */
+}
+
+.fa-regular.fa-envelope:hover {
+    color: #fff;
+    transform: scale(1.20);
+    transition: color 0.2s ease, transform ease 0.2s; /* Transition */
+}
+
+.retour-en-haut {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 24px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}
+
+.retour-en-haut:hover {
+    background-color: #555;
+}
+
+.retour-en-haut i {
+    display: inline-block;
+    transform-origin: center;
+    animation: none; /* Pas d'animation par défaut */
+}
+
+/* Animation déclenchée par hover */
+.retour-en-haut:hover i {
+    animation: disappear-reappear-once 0.5s ease-in-out; /* Animation unique */
+}
+
+/* Animation principale */
+@keyframes disappear-reappear-once {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-20px); /* Monte */
+    }
+    50% {
+        opacity: 0; /* Disparaît */
+        transform: translateY(-40px); /* Continue à monter */
+    }
+    70% {
+        opacity: 0;
+        transform: translateY(40px); /* Réapparaît en bas */
+    }
+    100% {
+        opacity: 1; /* Visible à nouveau */
+        transform: translateY(0); /* Revient à sa position initiale */
+    }
+}
+
+@media (max-width: 768px) {
+    .container-voiture {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .modele-voiture {
+        width: 90%;
+    }
+
+    .btn-option {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}

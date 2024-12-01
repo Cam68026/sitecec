@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <!-- Balise de titre d'onglet -->
+        <title>FF&2</title>
+
+        <!-- Balise pour l'incône d'onglet -->
+        <link rel="icon" type="image/png" href="../images/voiture-de-sport.png">
+
+        <!-- Lien vers le fichier CSS -->
+        <link rel="stylesheet" href="style.css">
+
+        <!-- Lien vers Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        
+        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1342.0.min.js"></script>
+
+    </head>
+<body>
+
+    <!-- Barre de navigation toujours visible -->
+    <nav>
+        <!-- Onglets de navigation -->
+        <div class="onglets">
+            <a href="#accueil">Accueil</a>
+            <a href="#equipe">Notre équipe</a>
+            <a href="#voiture">Notre voiture</a>
+            <a href="#stratégie">Notre stratégie</a>
+            <a href="#contexte">Contexte</a>
+            <a href="#galerie">Galerie</a>
+            <a href="#actualites">Actualités</a>
+            <a href="#sponsors">Sponsors</a>
+            <a href="#faq">FAQs</a>
+        </div>
+        <!-- Fin des onglets -->
+    </nav>
+    <!-- Fin de la barre de navigation -->
+
+    <!-- Header et Sections -->
+    <div class="contenu">
+        <!-- Header/Page d'accueil -->
+        <header id="accueil" class="active">
+            <h1>Notre équipe Course en cours</h1>
+            <h2>Qu'est ce que le concours "Course en cours" ?</h2>
+            <p class="description">
+                <strong>Course en cours</strong> est un concours éducatif innovant qui mèle ingénierie, design et travail d'équipe. Chaque année, des lycéens passionés
+                conçoivent, modélisent et fabriquent une mini voiture de course en utilisant des coutils professionnels, tout en développant un projet entrepreneurial
+                autour de leur création. L'objectif ? Allier créativité, technique et performance pour remporter le titre de champion !
+            </p>
+            <div class="img_header">
+                <img src="../images/work_in_progresss.png" alt="Image description 1">
+                <img src="../images/work_in_progresss.png" alt="Image description 2">
+                <img src="../images/work_in_progresss.png" alt="Image description 3">
+            </div>
+        </header>
+        <!-- Fin du Header/Page d'accueil -->
+
+        <!-- Section équipe -->
+        <section id="equipe" class="section-equipe">
+            <!-- Conteneur principal pour la section équipe-->
+            <div class="conteneur">
+                <!-- Header de titre -->
+                <div class="header-equipe">
+                    <h1 class="titre">Notre équipe</h1>
+                    <p class="sous-titre">
+                        Découvrez les talents qui font avancer notre projet. Chacun d'entre eux apporte expertise et passion.
+                    </p>
+                </div>
+
+                <!-- Filtres -->
+                <div class="filtres">
+                    <button class="filtre actif" data-role="all">Tous</button>
+                    <button class="filtre" data-role="cheffe">Cheffe de projet</button>
+                    <button class="filtre" data-role="ingenieur">Ingénieurs</button>
+                    <button class="filtre" data-role="designer">Designers</button>
+                    <button class="filtre" data-role="commerciale">Commerciale</button>
+                </div>
+
+                <!-- Grilles des membres -->
+                <div class="equipe-grid">
+                    <div class="carte-membre" data-role="cheffe">
+                        <div class="contenu-carte-equipe">
+                            <!-- Face avant -->
+                            <div class="face-avant">
+                                <img src="../images/work_in_progresss.png" alt="Océane" class="photo-membre">
+                                <h2 class="nom">Océane</h2>
+                                <span class="role">Cheffe de projet</span>
+                            </div>
+
+                            <!-- Face arrière -->
+                            <div class="face-arriere">
+                                <h3>A propos</h3>
+                                <p>Océane s'assure que chaque détail technique de notre voiture soit parfait</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carte-membre" data-role="commerciale">
+                        <div class="contenu-carte-equipe">
+                            <!-- Face avant -->
+                            <div class="face-avant">
+                                <img src="../images/work_in_progresss.png" alt="Nadège" class="photo-membre">
+                                <h2 class="nom">Nadège</h2>
+                                <span class="role_nadege">Responsable Commerciale et Communication</span>
+                            </div>
+
+                            <!-- Face arrière -->
+                            <div class="face-arriere">
+                                <h3>A propos</h3>
+                                <p>Nadège s'occupe des comptes de réseaux sociaux et des sponsors</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carte-membre" data-role="ingenieur">
+                        <div class="contenu-carte-equipe">
+                            <!-- Face avant -->
+                            <div class="face-avant">
+                                <img src="../images/work_in_progresss.png" alt="Lucie" class="photo-membre">
+                                <h2 class="nom">Lucie</h2>
+                                <span class="role">Ingénieure mécanique</span>
+                            </div>
+
+                            <!-- Face arrière -->
+                            <div class="face-arriere">
+                                <h3>A propos</h3>
+                                <p>Lucie est notre ingénieure mécanique</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carte-membre" data-role="designer">
+                        <div class="contenu-carte-equipe">
+                            <!-- Face avant -->
+                            <div class="face-avant">
+                                <img src="../images/work_in_progresss.png" alt="Elise" class="photo-membre">
+                                <h2 class="nom">Elise</h2>
+                                <span class="role">Designer</span>
+                            </div>
+
+                            <!-- Face arrière -->
+                            <div class="face-arriere">
+                                <h3>A propos</h3>
+                                <p>Elise est notre designer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carte-membre" data-role="designer">
+                        <div class="contenu-carte-equipe">
+                            <!-- Face avant -->
+                            <div class="face-avant">
+                                <img src="../images/work_in_progresss.png" alt="Manon" class="photo-membre">
+                                <h2 class="nom">Manon</h2>
+                                <span class="role">Designer</span>
+                            </div>
+
+                            <!-- Face arriere -->
+                            <div class="face-arriere">
+                                <h3>A propos</h3>
+                                <p>Manon est notre cheffe artistique du stand</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carte-membre" data-role="ingenieur">
+                        <div class="contenu-carte-equipe">
+                            <!-- Face avant -->
+                            <div class="face-avant">
+                                <img src="../images/work_in_progresss.png" alt="Camille" class="photo-membre">
+                                <h2 class="nom">Camille</h2>
+                                <span class="role">Responsable Informatique</span>
+                            </div>
+
+                            <!-- Face arriere -->
+                            <div class="face-arriere">
+                                <h3>A propos</h3>
+                                <p>Camille ELSAESSER est le GRAND créateur du site, il est aussi le RESPONSABLE informatique de la voiture</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="voiture">
+            <div class="container-voiture">
+                <div class="modele-voiture">
+                    <img src="../images/work_in_progresss.png" alt="Photo_voiture" class="voiture-img">
+                </div>
+                <div class="options-voiture">
+                    <button class="btn-option" data-angle="avant">Vue Avant</button>
+                    <button class="btn-option" data-angle="arriere">Vue Arrière</button>
+                    <button class="btn-option" data-color="noir">Couleur noire</button>
+                    <button class="btn-option" data-color="rouge">Couleur rouge</button>
+                </div>
+            </div>
+        </section>
+        <section id="stratégie">
+            <h1>Notre stratégie</h1>
+            <p>
+                Notre équipe adopte une approche innovante et collaborative pour exceller dans le concours
+                <strong>Course en cours</strong>. Nous avons défini une stratégie :
+            </p>
+
+            <div class="ensemble">
+                <!-- Div 1 Ingénierie -->
+                <div class="ingenierie">
+                    <img src="../images/work_in_progresss.png" alt="Ingénierie" class="ingenierie">
+                    <h2>1. Excellence technique</h2>
+                    <p>
+                        Utilisation des outils professionnels pour concevoir une voiture performante et
+                        aérodynamique, en nous inspirant des meilleures pratiques de l'ingénierie automobile.
+                    </p>
+                </div>
+
+                <!-- Div 2 Design -->
+                <div class="design">
+                    <img src="../images/work_in_progresss.png" alt="Design" class="design">
+                    <h2>2. Design</h2>
+                    <p><!-- A remplir --></p>
+                </div>
+            </div>
+        </section>
+        <section id="contexte">
+            <h1>Contexte de la voiture</h1>
+        </section>
+        <section id="galerie">
+            <h1>Galerie</h1>
+        </section>
+        <section id="actualites">
+            <h1>Nos dernières actualités</h1>
+            <!-- Modal pour ajouter un article -->
+            <div id="modal-article" style="display: none;">
+                <div class="modal-content">
+                    <!-- Menu d'édition -->
+                    <div class="menu-edition">
+                        <h2>Créer un nouvel article</h2>
+                        
+                        <!-- Champ Titre -->
+                        <label for="titre-article">Titre :</label>
+                        <input type="text" id="titre-article" placeholder="Entrez le titre">
+                        
+                        <!-- Champ Description -->
+                        <label for="description-article">Description :</label>
+                        <textarea id="description-article" placeholder="Entrez la description"></textarea>
+                        
+                        <!-- Champ URL de l'image -->
+                        <label for="image-article">Image (URL) :</label>
+                        <input type="text" id="image-article" placeholder="URL de l'image">
+                        
+                        <!-- Champ Description de l'image -->
+                        <label for="description-image-article">Description de l'image :</label>
+                        <input type="text" id="description-image-article" placeholder="Entrez une description de l'image">
+            
+                        <!-- Boutons -->
+                        <button id="publier-article">Publier</button>
+                        <button id="fermer-modal">Fermer</button>
+                    </div>
+            
+                    <!-- Aperçu -->
+                    <div id="aperçu-article" class="article">
+                        <div class="div_article_description">
+                            <h2 class="titre_article">Titre d'aperçu</h2>
+                            <p class="description_article">Description d'aperçu</p>
+                        </div>
+                        <div class="div_article">
+                            <img src="../images/work_in_progresss.png" alt="Aperçu de l'image" class="image_article">
+                            <p class="description_article_image">Description de l'image</p>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            <button id="ouvrir-modal">Ajouter un article</button>
+        </section>
+        <section id="sponsors" class="sponsors-section">
+            <h2 class="section-title">Nos Sponsors et Partenaires</h2>
+            <p class="section-description">
+              Nous remercions chaleureusement nos sponsors pour leur soutien. Découvrez leurs entreprises et projets !
+            </p>
+            <div class="sponsors-grid">
+              <div class="sponsor-card">
+                <div class="sponsor-logo-container">
+                  <img src="sponsor1.png" alt="Logo Sponsor 1" class="sponsor-logo">
+                </div>
+                <div class="sponsor-overlay">
+                  <h3 class="sponsor-name">Sponsor 1</h3>
+                  <p class="sponsor-description">
+                    Une entreprise qui innove dans le domaine de la technologie automobile.
+                  </p>
+                  <a href="#" class="sponsor-link">Visiter le site</a>
+                </div>
+              </div>
+          
+              <div class="sponsor-card">
+                <div class="sponsor-logo-container">
+                  <img src="sponsor2.png" alt="Logo Sponsor 2" class="sponsor-logo">
+                </div>
+                <div class="sponsor-overlay">
+                  <h3 class="sponsor-name">Sponsor 2</h3>
+                  <p class="sponsor-description">
+                    Leader en design et ingénierie pour des projets innovants.
+                  </p>
+                  <a href="#" class="sponsor-link">Visiter le site</a>
+                </div>
+              </div>
+
+              <div class="sponsor-card">
+                <div class="sponsor-logo-container">
+                  <img src="sponsor2.png" alt="Logo Sponsor 2" class="sponsor-logo">
+                </div>
+                <div class="sponsor-overlay">
+                  <h3 class="sponsor-name">Sponsor 2</h3>
+                  <p class="sponsor-description">
+                    Leader en design et ingénierie pour des projets innovants.
+                  </p>
+                  <a href="#" class="sponsor-link">Visiter le site</a>
+                </div>
+              </div>
+
+              <div class="sponsor-card">
+                <div class="sponsor-logo-container">
+                  <img src="sponsor2.png" alt="Logo Sponsor 2" class="sponsor-logo">
+                </div>
+                <div class="sponsor-overlay">
+                  <h3 class="sponsor-name">Sponsor 2</h3>
+                  <p class="sponsor-description">
+                    Leader en design et ingénierie pour des projets innovants.
+                  </p>
+                  <a href="#" class="sponsor-link">Visiter le site</a>
+                </div>
+              </div>
+
+              <div class="sponsor-card">
+                <div class="sponsor-logo-container">
+                  <img src="sponsor2.png" alt="Logo Sponsor 2" class="sponsor-logo">
+                </div>
+                <div class="sponsor-overlay">
+                  <h3 class="sponsor-name">Sponsor 2</h3>
+                  <p class="sponsor-description">
+                    Leader en design et ingénierie pour des projets innovants.
+                  </p>
+                  <a href="#" class="sponsor-link">Visiter le site</a>
+                </div>
+              </div>
+
+              <div class="sponsor-card">
+                <div class="sponsor-logo-container">
+                  <img src="sponsor2.png" alt="Logo Sponsor 2" class="sponsor-logo">
+                </div>
+                <div class="sponsor-overlay">
+                  <h3 class="sponsor-name">Sponsor 2</h3>
+                  <p class="sponsor-description">
+                    Leader en design et ingénierie pour des projets innovants.
+                  </p>
+                  <a href="#" class="sponsor-link">Visiter le site</a>
+                </div>
+              </div> 
+          
+              <!-- Ajoute d'autres sponsors de la même manière -->
+            </div>         
+        </section>
+        <section id="faq">
+            <div class="container-faq">
+                <div class="header-faq">
+                    <h1 class="titre">FAQs</h1>
+                    <p class="sous-titre">
+                        Voici des questions fréquemment posées auxquelles nous avons répondu
+                    </p>
+                </div>
+                <div class="faq-grid">
+                    <!-- Carte 1 -->
+                    <div class="carte-faq">
+                        <div class="contenu-carte-faq">
+                            <!-- Face avant -->
+                            <div class="face-avant">
+                                <h3>Comment devenir sponsor ?</h3>
+                            </div>
+                            <!-- Face arriere -->
+                            <div class="face-arriere">
+                                <p>
+                                    Pour devenir sponsor il faut
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carte 2 -->
+                    <div class="carte-faq">
+                        <div class="contenu-carte-faq">
+                            <!-- Face avant -->
+                            <div class="face-avant">
+                                <h3><!-- A remplir --></h3>
+                            </div>
+                            <!-- Face arriere -->
+                            <div class="face-arriere">
+                                <p>
+                                    <!-- A remplir -->
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carte-faq">
+                        <div class="contenu-carte-faq">
+                            <!-- Face avant -->
+                            <div class="face-avant">
+                                <h3><!-- A remplir --></h3>
+                            </div>
+                            <!-- Face arriere -->
+                            <div class="face-arriere">
+                                <p>
+                                    <!-- A remplir -->
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carte-faq">
+                        <div class="contenu-carte-faq">
+                            <!-- Face avant -->
+                            <div class="face-avant">
+                                <h3><!-- A remplir --></h3>
+                            </div>
+                            <!-- Face arriere -->
+                            <div class="face-arriere">
+                                <p>
+                                    <!-- A remplir -->
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carte-faq">
+                        <div class="contenu-carte-faq">
+                            <!-- Face avant -->
+                            <div class="face-avant">
+                                <h3><!-- A remplir --></h3>
+                            </div>
+                            <!-- Face arriere -->
+                            <div class="face-arriere">
+                                <p>
+                                    <!-- A remplir -->
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carte-faq">
+                        <div class="contenu-carte-faq">
+                            <!-- Face avant -->
+                            <div class="face-avant">
+                                <h3><!-- A remplir --></h3>
+                            </div>
+                            <!-- Face arriere -->
+                            <div class="face-arriere">
+                                <p>
+                                    <!-- A remplir -->
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carte-faq">
+                        <div class="contenu-carte-faq">
+                            <!-- Face avant -->
+                            <div class="face-avant">
+                                <h3><!-- A remplir --></h3>
+                            </div>
+                            <!-- Face arriere -->
+                            <div class="face-arriere">
+                                <p>
+                                    <!-- A remplir -->
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carte-faq">
+                        <div class="contenu-carte-faq">
+                            <!-- Face avant -->
+                            <div class="face-avant">
+                                <h3><!-- A remplir --></h3>
+                            </div>
+                            <!-- Face arriere -->
+                            <div class="face-arriere">
+                                <p>
+                                    <!-- A remplir -->
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carte-faq">
+                        <div class="contenu-carte-faq">
+                            <!-- Face avant -->
+                            <div class="face-avant">
+                                <h3><!-- A remplir --></h3>
+                            </div>
+                            <!-- Face arriere -->
+                            <div class="face-arriere">
+                                <p>
+                                    <!-- A remplir -->
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <h5>Site codé par Camille</h5>
+        <div class="colonnes">
+            <div class="colonne">
+                <h5>Sections</h5>
+
+                <!-- Raccourcis footer pour sections -->
+                <a href="#accueil">
+                    <h6>Accueil</h6>
+                </a>
+
+                <a href="#equipe">
+                    <h6>Notre équipe</h6>
+                </a>
+
+                <a href="#voiture">
+                    <h6>Notre voiture</h6>
+                </a>
+
+                <a href="#stratégie">
+                    <h6>Notre stratégie</h6>
+                </a>
+
+                <a href="#galerie">
+                    <h6>Galerie</h6>
+                </a>
+
+                <a href="#actualites">
+                    <h6>Actualités</h6>
+                </a>
+
+                <a href="#sponsors">
+                    <h6>Sponsors</h6>
+                </a>
+
+                <a href="#faq">
+                    <h6>FAQs</h6>
+                </a>
+
+            </div>
+        <div class="colonne">
+            <h5>Notre équipe</h5>
+            
+            <!-- Membres de l'équipe -->
+            <a href="#equipe">
+                <h6>Océane</h6>
+            </a>
+
+            <a href="#equipe">
+                <h6>Nadège</h6>
+            </a>
+
+            <a href="#equipe">
+                <h6>Lucie</h6>
+            </a>
+
+            <a href="#equipe">
+                <h6>Elise</h6>
+            </a>
+
+            <a href="#equipe">
+                <h6>Manon</h6>
+            </a>
+
+            <a href="#equipe">
+                <h6>Camille</h6>
+            </a>
+
+        </div>
+
+        <div class="colonne">
+            <h5>Coucours Course en Cours</h5>
+            <a href="https://www.3ds.com/fr/"><img src="../images/Dassault_systèmes.svg" alt="image_dassault" width="100" height="50"></a>
+            <a href="https://course-en-cours.com"><img src="../images/course_en_cours_logo.png" alt="logo course-en-cours" width="100" height="50"></a>
+            <a href="https://www.renaultgroup.com"><img src="../images/logo-groupe-renault-new.svg" alt="imga_renault"></a>
+            <a href="https://www.segulatechnologies.com/fr/"><img src="../images/SEGULA_Technologies_logo.png" alt="image_segula" width="100"></a>
+            <a href="https://pfa-auto.fr"><img src="../images/PFA_logo_couleur.jpg" alt="image_pfa" width="100"></a>
+            <a href="https://www.ellesbougent.com"><img src="../images/logo_ellesbougent.png" alt="image_ellesbougent" width="100"></a>
+        </div>
+        
+        <!-- Bouton de retour en haut de page -->
+        <a href="#top" class="retour-en-haut">
+            <i class="fa-solid fa-arrow-up"></i>
+        </a>
+
+        <!-- Raccourcis réseaux/email -->
+        <div class="raccourcis">
+            <span>
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            </span>
+            <span>
+                <a href="https://www.tiktok.com/@_fastandfurious2_" target="_blank" aria-label="Tiktok"><i class="fab fa-tiktok"></i></a>
+            </span>
+            <span>
+                <a href="https://www.instagram.com/fast.and.furious_cec/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </span>
+            <span>
+                <a href="mailto:projet.fastandfurious1@gmail.com"><i class="fa-regular fa-envelope"></i></a>
+            </span>
+        </div>
+    </footer>
+    <!-- Fin du Footer -->
+
+    <script src="script.js"></script>
+</body>
+</html>
