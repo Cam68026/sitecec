@@ -1,0 +1,13 @@
+version: 1
+frontend:
+  phases:
+    build:
+      commands:
+        - echo "No build steps required. Deploying static files."
+  artifacts:
+    baseDirectory: /
+    files:
+      - 'v2/**/*'         # Inclure tout le contenu de /v2
+      - 'images/**/*'     # Inclure tout le contenu du dossier images
+  cache:
+    paths: []
