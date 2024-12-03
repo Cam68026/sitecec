@@ -3,11 +3,10 @@ frontend:
   phases:
     build:
       commands:
-        - echo "No build steps required. Deploying static files."
+        - echo "Starting deployment of static files."
   artifacts:
-    baseDirectory: /
+    baseDirectory: v2
     files:
-      - 'v2/**/*'         # Inclure tout le contenu de /v2
-      - 'images/**/*'     # Inclure tout le contenu du dossier images
+      - '**/*'
   cache:
     paths: []
