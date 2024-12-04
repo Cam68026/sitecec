@@ -315,6 +315,7 @@ div.header-equipe {
     border-radius: 10px;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
+    margin-bottom: 30px;
 }
   
 .galerie-item img:hover {
