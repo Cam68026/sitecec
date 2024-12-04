@@ -74,7 +74,7 @@ nav .onglets a:hover {
 header {
     color: #fff;
     padding-top: 40px;
-    background-image: url('/v2/images/fond_de_site.jpg');
+    background-image: url('images/fond_de_site.jpg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
