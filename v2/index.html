@@ -222,8 +222,29 @@
             <h1>Contexte de la voiture</h1>
         </section>
         <section id="galerie">
-            <h1>Galerie</h1>
+            <div class="gallery-item">
+                <img src="images/image1.png" alt="Image 1" onclick="openLightbox('images/image1.png')">
+              </div>
+              <div class="gallery-item">
+                <img src="images/image2.png" alt="Image 2" onclick="openLightbox('images/image2.png')">
+              </div>
+              <div class="gallery-item">
+                <img src="images/image3.png" alt="Image 3" onclick="openLightbox('images/image3.png')">
+              </div>
+              <div class="gallery-item">
+                <img src="images/image4.png" alt="Image 4" onclick="openLightbox('images/image4.png')">
+              </div>
+              <div class="gallery-item">
+                <img src="images/image5.png" alt="Image 5" onclick="openLightbox('images/image5.png')">
+              </div>
         </section>
+
+        <!-- Lightbox -->
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <span class="close">&times;</span>
+            <img src="" alt="Image Lightbox" id="lightbox-img" class="lightbox-content">
+        </div>
+        
         <section id="actualites">
             <h1>Nos dernières actualités</h1>
             <!-- Modal pour ajouter un article -->
