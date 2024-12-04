@@ -106,16 +106,30 @@ document.addEventListener("DOMContentLoaded", () => {
         const description = descriptionInput.value;
         const image = imageInput.value;
         const descriptionImage = descriptionImageInput.value;
+        const dureeSuppression = parseInt(dureeSuppressionInput.value, 10);
 
         if (!titre || !description || !descriptionImage) {
             alert("Veuillez remplir tous les champs avant de publier !");
             return;
         }
 
+        const expirationDate = dureeSuppression > 0 
+        ? new Date(Date.now() + dureeSuppression * 24 * 60 * 60 * 1000).toISOString() 
+        : null;
+
         const fileName = `article_${Date.now()}.json`;
 
+        const articleData = {
+            titre: titre,
+            description: description,
+            imageURL: image,
+            descriptionImage: descriptionImage,
+            date: new Date().toISOString(),
+            expirationDate: expirationDate // Ajouter la date d'expiration
+        };
+
         // Appel de la fonction pour sauvegarder dans GitHub
-        sauvegarderArticle(titre, description, image, fileName);
+        sauvegarderArticle(articleData, fileName);
 
         // Ajouter l'article à la page localement
         const nouvelArticle = document.createElement("article");
@@ -147,13 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.style.display = "none";
     });
 
-    function sauvegarderArticle(titre, description, imageURL, fileName) {
-        const article = {
-            titre: titre,
-            description: description,
-            imageURL: imageURL,
-            date: new Date().toISOString()
-        };
+    function sauvegarderArticle(articleData, fileName) {
 
         const filePath = `articles/${fileName}`;
 
@@ -166,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             body: JSON.stringify({
                 message: `Ajout de l'article ${fileName}`,
-                content: btoa(JSON.stringify(article)), // Encodage en base64
+                content: btoa(JSON.stringify(articleData)), // Encodage en base64
                 branch: githubBranch
             })
         })
@@ -249,6 +257,16 @@ document.addEventListener("DOMContentLoaded", () => {
                         fetch(fichier.download_url)
                             .then(response => response.json())
                             .then(article => {
+                                const now = new Date();
+                                const expirationDate = article.expirationDate ? new Date(article.expirationDate) : null;
+    
+                                // Vérifier si l'article est expiré
+                                if (expirationDate && expirationDate < now) {
+                                    console.log(`Suppression automatique de l'article expiré : ${fichier.name}`);
+                                    supprimerArticle(fichier.name, null); // Supprime l'article de GitHub
+                                    return; // Ne l'affiche pas
+                                }
+    
                                 // Créer l'élément HTML pour afficher l'article
                                 const nouvelArticle = document.createElement("article");
                                 nouvelArticle.classList.add("article");
@@ -259,7 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     </div>
                                     <div class="div_article">
                                         <img src="${article.imageURL}" alt="${article.titre}" class="image_article">
-                                        <p class="description_article_image">${article.description}</p>
+                                        <p class="description_article_image">${article.descriptionImage}</p>
                                     </div>
                                     <button class="supprimer-article" data-filename="${fichier.name}">Supprimer</button>
                                 `;
@@ -285,7 +303,6 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Impossible de récupérer les articles.");
         });
     }
-    
 });
 
 
