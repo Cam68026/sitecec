@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const descriptionInput = document.getElementById("description-article");
     const imageInput = document.getElementById("image-article");
     const descriptionImageInput = document.getElementById("description-image-article");
+    const dureeSuppressionInput = document.getElementById("duree-suppression")
 
     const aperçuArticle = document.getElementById("aperçu-article");
     const actualitesSection = document.getElementById("actualites");
