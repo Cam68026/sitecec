@@ -5,7 +5,7 @@ frontend:
       commands:
         - echo "Starting deployment of static files."
   artifacts:
-    baseDirectory: v2
+    baseDirectory: /v2
     files:
       - '**/*'
   cache:
