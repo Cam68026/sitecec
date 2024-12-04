@@ -491,6 +491,7 @@ button#publier-article {
     border-radius: 7px;
     margin-right: 10px;
     color: #fff;
+    cursor: pointer;
 }
 
 button#fermer-modal {
@@ -499,6 +500,7 @@ button#fermer-modal {
     padding: 10px 10px;
     border-radius: 7px;
     color: #fff;
+    cursor: pointer;
 }
 
 button.supprimer-article {

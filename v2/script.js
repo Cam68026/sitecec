@@ -65,10 +65,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const titreInput = document.getElementById("titre-article");
     const descriptionInput = document.getElementById("description-article");
     const imageInput = document.getElementById("image-article");
-    const descriptionImageInput = document.getElementById("description-image-article"); // Nouveau champ
+    const descriptionImageInput = document.getElementById("description-image-article");
 
     const aperçuArticle = document.getElementById("aperçu-article");
     const actualitesSection = document.getElementById("actualites");
+
+    const githubToken = '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'; // Remplacez par votre token GitHub
+    const githubOwner = 'Cam68026'; // Remplacez par votre nom d'utilisateur GitHub
+    const githubRepo = 'sitecec'; // Remplacez par le nom du dépôt
+    const githubBranch = 'main'; // Branche où vous souhaitez travailler
+    afficherArticles();
 
     // Ouvrir le modal
     ouvrirModalBtn.addEventListener("click", () => {
@@ -85,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
         input.addEventListener("input", () => {
             const titre = titreInput.value || "Titre d'aperçu";
             const description = descriptionInput.value || "Description d'aperçu";
-            const image = imageInput.value || "../images/work_in_progresss.png";
+            const image = imageInput.value || "images/work_in_progresss.png";
             const descriptionImage = descriptionImageInput.value || "Description de l'image";
 
             aperçuArticle.querySelector(".titre_article").textContent = titre;
@@ -99,18 +105,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const titre = titreInput.value;
         const description = descriptionInput.value;
         const image = imageInput.value;
-        const descriptionImage = descriptionImageInput.value
-    
+        const descriptionImage = descriptionImageInput.value;
+
         if (!titre || !description || !descriptionImage) {
             alert("Veuillez remplir tous les champs avant de publier !");
             return;
         }
 
-        const fileName = `articles/article_${Date.now()}.json`;
-    
-        // Appel de la fonction pour sauvegarder dans S3
+        const fileName = `article_${Date.now()}.json`;
+
+        // Appel de la fonction pour sauvegarder dans GitHub
         sauvegarderArticle(titre, description, image, fileName);
-    
+
         // Ajouter l'article à la page localement
         const nouvelArticle = document.createElement("article");
         nouvelArticle.classList.add("article");
@@ -121,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="div_article">
                 <img src="${image}" alt="${titre}" class="image_article">
-                <p class="description_article_image">${description}</p>
+                <p class="description_article_image">${descriptionImage}</p>
             </div>
             <button class="supprimer-article" data-filename="${fileName}">Supprimer</button>
         `;
@@ -132,79 +138,166 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         actualitesSection.appendChild(nouvelArticle);
-    
+
         // Réinitialiser les champs et fermer le modal
         titreInput.value = "";
         descriptionInput.value = "";
         imageInput.value = "";
+        descriptionImageInput.value = "";
         modal.style.display = "none";
     });
+
+    function sauvegarderArticle(titre, description, imageURL, fileName) {
+        const article = {
+            titre: titre,
+            description: description,
+            imageURL: imageURL,
+            date: new Date().toISOString()
+        };
+
+        const filePath = `articles/${fileName}`;
+
+        // Appel à l'API GitHub pour créer/mettre à jour un fichier
+        fetch(`https://api.github.com/repos/${githubOwner}/${githubRepo}/contents/${filePath}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `token ${githubToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: `Ajout de l'article ${fileName}`,
+                content: btoa(JSON.stringify(article)), // Encodage en base64
+                branch: githubBranch
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.content) {
+                    console.log('Succès ! Article sauvegardé à :', data.content.html_url);
+                    alert('Article sauvegardé avec succès sur GitHub !');
+                } else {
+                    console.error('Erreur lors de la sauvegarde :', data);
+                    alert('Erreur lors de la sauvegarde. Consultez la console.');
+                }
+            })
+            .catch(err => {
+                console.error('Erreur réseau ou API :', err.message);
+                alert('Erreur réseau ou API.');
+            });
+    }
+
+    function supprimerArticle(fileName, articleElement) {
+        const filePath = `articles/${fileName}`;
+
+        // Récupérer le SHA du fichier avant suppression
+        fetch(`https://api.github.com/repos/${githubOwner}/${githubRepo}/contents/${filePath}`, {
+            headers: {
+                'Authorization': `token ${githubToken}`
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.sha) {
+                    // Appel à l'API GitHub pour supprimer un fichier
+                    return fetch(`https://api.github.com/repos/${githubOwner}/${githubRepo}/contents/${filePath}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': `token ${githubToken}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            message: `Suppression de l'article ${fileName}`,
+                            sha: data.sha,
+                            branch: githubBranch
+                        })
+                    });
+                } else {
+                    throw new Error('Fichier introuvable sur GitHub.');
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Article supprimé avec succès :', fileName);
+                    alert('Article supprimé sur GitHub !');
+                    articleElement.remove();
+                } else {
+                    console.error('Erreur lors de la suppression :', response);
+                    alert('Erreur lors de la suppression. Consultez la console.');
+                }
+            })
+            .catch(err => {
+                console.error('Erreur réseau ou API :', err.message);
+                alert('Erreur réseau ou API.');
+            });
+    }
+    function afficherArticles() {
+        const dossierArticles = 'articles/';
+        const actualitesSection = document.getElementById("actualites");
+    
+        // Récupérer la liste des fichiers dans le dossier "articles/"
+        fetch(`https://api.github.com/repos/${githubOwner}/${githubRepo}/contents/${dossierArticles}?ref=${githubBranch}`, {
+            headers: {
+                'Authorization': `token ${githubToken}`
+            }
+        })
+        .then(response => response.json())
+        .then(fichiers => {
+            if (Array.isArray(fichiers)) {
+                fichiers.forEach(fichier => {
+                    if (fichier.name.endsWith('.json')) {
+                        // Récupérer le contenu de chaque fichier JSON
+                        fetch(fichier.download_url)
+                            .then(response => response.json())
+                            .then(article => {
+                                // Créer l'élément HTML pour afficher l'article
+                                const nouvelArticle = document.createElement("article");
+                                nouvelArticle.classList.add("article");
+                                nouvelArticle.innerHTML = `
+                                    <div class="div_article_description">
+                                        <h2 class="titre_article">${article.titre}</h2>
+                                        <p class="description_article">${article.description}</p>
+                                    </div>
+                                    <div class="div_article">
+                                        <img src="${article.imageURL}" alt="${article.titre}" class="image_article">
+                                        <p class="description_article_image">${article.description}</p>
+                                    </div>
+                                    <button class="supprimer-article" data-filename="${fichier.name}">Supprimer</button>
+                                `;
+    
+                                // Ajouter un gestionnaire pour le bouton de suppression
+                                nouvelArticle.querySelector(".supprimer-article").addEventListener("click", function () {
+                                    supprimerArticle(fichier.name, nouvelArticle);
+                                });
+    
+                                // Ajouter l'article à la section "actualites"
+                                actualitesSection.appendChild(nouvelArticle);
+                            })
+                            .catch(err => console.error("Erreur lors du chargement de l'article :", err.message));
+                    }
+                });
+            } else {
+                console.error("Aucun fichier trouvé dans le dossier articles/ :", fichiers);
+                alert("Aucun article disponible pour le moment.");
+            }
+        })
+        .catch(err => {
+            console.error("Erreur lors de la récupération des fichiers :", err.message);
+            alert("Impossible de récupérer les articles.");
+        });
+    }
+    
 });
 
-// Configuration AWS SDK
-AWS.config.update({
-    accessKeyId: 'AKIAQMEY5Y7LX4RE76QZ', // Remplacez par votre Access Key
-    secretAccessKey: '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', // Remplacez par votre Secret Key
-    region: 'eu-north-1' // Remplacez par votre région
-});
 
-const s3 = new AWS.S3();
-const bucketName = 'sitecec';
-
-function sauvegarderArticle(titre, description, imageURL, fileName) {
-    const article = {
-        titre: titre,
-        description: description,
-        imageURL: imageURL,
-        date: new Date().toISOString()
-    };
-
-    const params = {
-        Bucket: bucketName,
-        Key: fileName,
-        Body: JSON.stringify(article),
-        ContentType: 'application/json'
-    };
-
-    s3.upload(params, function (err, data) {
-        if (err) {
-            console.error('Erreur lors de l’upload:', err.message);
-            alert(`Erreur: ${err.message}`);
-        } else {
-            console.log('Succès ! Fichier sauvegardé à:', data.Location);
-            alert('Article sauvegardé avec succès !');
-        }
-    });
-}
-
-function supprimerArticle(fileName, articleElement) {
-    const params = {
-        Bucket: bucketName,
-        Key: fileName
-    };
-
-    s3.deleteObject(params, function (err, data) {
-        if (err) {
-            console.error("Erreur lors de la suppression:", err.message);
-            alert(`Erreur: ${err.message}`);
-        } else {
-            console.log("Article supprimé avec succès :", fileName);
-            alert("Article supprimé !");
-            // Retirer l'article de l'interface
-            articleElement.remove();
-        }
-    });
-}
 function openLightbox(imageSrc) {
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-  
-    lightboxImg.src = imageSrc;
-    lightbox.style.display = 'flex';
-  }
-  
-  function closeLightbox() {
-    const lightbox = document.getElementById('lightbox');
-    lightbox.style.display = 'none';
-  }
-  
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  lightboxImg.src = imageSrc;
+  lightbox.style.display = 'flex';
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  lightbox.style.display = 'none';
+}
