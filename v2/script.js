@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(data => {
                 if (data.content) {
                     console.log('Succès ! Article sauvegardé à :', data.content.html_url);
-                    alert('Article sauvegardé avec succès sur GitHub !');
+                    alert('Article sauvegardé avec succès !');
                 } else {
                     console.error('Erreur lors de la sauvegarde :', data);
                     alert('Erreur lors de la sauvegarde. Consultez la console.');
@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(response => {
                 if (response.ok) {
                     console.log('Article supprimé avec succès :', fileName);
-                    alert('Article supprimé sur GitHub !');
+                    alert('Article supprimé avec succès !');
                     articleElement.remove();
                 } else {
                     console.error('Erreur lors de la suppression :', response);

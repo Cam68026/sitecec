@@ -363,6 +363,7 @@ article.article {
     margin-top: 30px;
     display: flex;
     justify-content: space-around;
+    position: relative;
 }
 
 article .titre_article {
@@ -414,6 +415,36 @@ article p.description_article_image {
     justify-content: center;
     align-items: center;
     z-index: 1000;
+}
+
+button#ouvrir-modal {
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0px;
+    padding: 10px 0px;
+    width: 100px;
+    background: green;
+    color: #fff;
+    border: none;
+}
+
+button.supprimer-article {
+    padding: 1px 6px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: red;
+    color: #fff;
+    border: none;
+    bottom: 0px;
+    right: 0px;
+    position: absolute;
+    bottom: 15px;
+    right: 30px;
+}
+
+button.supprimer-article:hover {
+    transform: scale(1.1);
+    transition: transform 0.3 ease;
 }
 
 .modal-content {
