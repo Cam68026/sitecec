@@ -32,6 +32,7 @@ header.active, section.active {
 header p.description {
     text-align: left;
     margin: 50px;
+    margin-top: 25px;
 }
 
 header div.img_header {
