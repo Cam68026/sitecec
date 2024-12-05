@@ -436,7 +436,7 @@ article p.description_article_image {
 .modal-content input,
 .modal-content textarea {
     width: 100%;
-    margin: 10px 0;
+    margin: 10px 0px;
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -449,6 +449,16 @@ article p.description_article_image {
     margin-bottom: 5px;
     font-weight: bold;
     color: #ccc;
+}
+
+.modal-content select#duree-suppression {
+    border: none;
+    margin: 10px 0px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    background: #2b2b2b;
+    color: #a0a0a0;
 }
 
 #aperçu-article {
