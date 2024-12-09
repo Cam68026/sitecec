@@ -1,0 +1,25 @@
+{
+  "name": "sitecec",
+  "version": "1.0.0",
+  "description": "🚗 Course en Cours - Site Internet de l'Équipe\r Bienvenue sur le dépôt GitHub de notre site internet conçu dans le cadre du concours Course en Cours. Ce projet met en valeur notre équipe, nos sponsors, notre design de voiture et notre passion pour l’ingénierie et la compétition.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@aws-amplify/backend": "^1.8.0",
+    "@aws-amplify/backend-cli": "^1.4.2",
+    "aws-cdk": "^2.172.0",
+    "aws-cdk-lib": "^2.172.0",
+    "constructs": "^10.4.2",
+    "esbuild": "^0.24.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "aws-amplify": "^6.10.2"
+  }
+}
