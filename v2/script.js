@@ -322,7 +322,7 @@ function closeLightbox() {
 }
 const styles = document.querySelectorAll('style');
 styles.forEach(style => {
-  if (style.innerHTML.includes('display: none !important')) {
+  if (style.innerHTML.includes('display: none !important;')) {
     style.remove();
   }
 });
