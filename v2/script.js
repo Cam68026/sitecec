@@ -320,3 +320,9 @@ function closeLightbox() {
   const lightbox = document.getElementById('lightbox');
   lightbox.style.display = 'none';
 }
+const styles = document.querySelectorAll('style');
+styles.forEach(style => {
+  if (style.innerHTML.includes('display: none !important')) {
+    style.remove();
+  }
+});
