@@ -292,6 +292,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 actualitesSection.appendChild(nouvelArticle);
                             })
                             .catch(err => console.error("Erreur lors du chargement de l'article :", err.message));
+                            alert("Un article est disponible ! N'hésitez pas à aller le consulter dans Actualités")
                     }
                 });
             } else {
