@@ -898,6 +898,7 @@ footer .raccourcis span {
     header h1 {
         font-size: 25px;
         padding: 10px;
+        font-size: 2em;
     }
 
     header p.description {
