@@ -618,7 +618,7 @@ button.supprimer-article {
     color: #fff;
     padding: 20px;
     text-align: center;
-    transform: translateY(110%);
+    transform: translateY(100%);
     transition: transform 0.3s ease;
 }
 
@@ -637,8 +637,7 @@ button.supprimer-article {
     margin-bottom: 15px;
 }
   
-.sponsor-link {
-    display: block;
+a.sponsor-link {
     padding: 10px 20px;
     background: #ff6a00;
     color: #fff;
@@ -648,9 +647,17 @@ button.supprimer-article {
     transition: background 0.3s ease;
 }
   
-.sponsor-link:hover {
+a.sponsor-link:hover {
     background: #e85b00;
-}  
+}
+
+h3.sponsor-name {
+    margin: 0px;
+}
+
+p.sponsor-description {
+    margin-top: 8px;
+}
 
 /* Section FAQs */
 section.faq {
