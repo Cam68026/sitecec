@@ -15,7 +15,7 @@ def calculate_version(commits):
     major = 2
     minor = sum(1 for c in commits if "[feature]" in c)
     patch = len(commits) - minor
-    return f"{major}.{minor:03d}.{patch:03d}"
+    return f"{major}.{minor:03d}{patch:03d}"
 
 if __name__ == "__main__":
     commits = get_commits()
