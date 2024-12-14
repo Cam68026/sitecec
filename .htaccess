@@ -1,3 +1,7 @@
 AddType image/jpeg .jpg
 AddType image/png .png
 AddType image/svg .svg
+<Files "version.txt">
+    Order allow,deny
+    Deny from all
+</Files>

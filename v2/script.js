@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                message: `Ajout de l'article ${fileName}`,
+                message: `Ajout de l'article ${fileName} [skip-version]`,
                 content: btoa(JSON.stringify(articleData)), // Encodage en base64
                 branch: githubBranch
             })
@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
-                            message: `Suppression de l'article ${fileName}`,
+                            message: `Suppression de l'article ${fileName} [skip-version]`,
                             sha: data.sha,
                             branch: githubBranch
                         })

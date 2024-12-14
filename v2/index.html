@@ -173,7 +173,6 @@
                             <div class="face-arriere">
                                 <h3>A propos</h3>
                                 <p>Camille ELSAESSER est le GRAND créateur du site, il est aussi le RESPONSABLE informatique de la voiture
-                                    ya pas meilleur suceur.
                                 </p>
                             </div>
                         </div>
@@ -649,6 +648,15 @@
                 <a href="mailto:lesbronzesfontlacourse@gmail.com"><i class="fa-regular fa-envelope"></i></a>
             </span>
         </div>
+        <div id="version">Version : Loading...</div>
+        <script>
+        fetch('version.txt')
+            .then(response => response.text())
+            .then(version => {
+                document.getElementById('version').innerText = `Version : ${version}`;
+        })
+        .catch(() => console.log("Erreur de chargement de la version."));
+        </script>
     </footer>
     <!-- Fin du Footer -->
 
