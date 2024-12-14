@@ -1,9 +1,9 @@
 import subprocess
 
 def get_commits():
-    """Récupère les commits en ignorant ceux marqués [skip-version]."""
+    """Récupère les commits distants en ignorant ceux marqués [skip-version]."""
     result = subprocess.run(
-        ["git", "log", "--pretty=%s"],
+        ["git", "log", "origin/main..main", "--pretty=%s"],  # Compare les commits locaux et distants
         text=True,
         capture_output=True
     )
@@ -11,7 +11,7 @@ def get_commits():
     return [c for c in commits if "[skip-version]" not in c]
 
 def calculate_version(commits):
-    """Calcule la version sous le format 2.YYY.ZZZ."""
+    """Calcule la version sous le format 2.YYYZZZ"""
     major = 2
     minor = sum(1 for c in commits if "[feature]" in c)
     patch = len(commits) - minor
