@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          persist-credentials: false  # Désactive les credentials par défaut
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -22,9 +24,11 @@ jobs:
         run: python scripts/version_calculator.py
 
       - name: Commit and push version
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
           git add version.txt
           git commit -m "Update version file"
-          git push
+          git push https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git main
