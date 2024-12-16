@@ -22,3 +22,5 @@ Réponses aux questions fréquentes des visiteurs.
 
 🚀 Technologies utilisées
 HTML5 / CSS3 / JavaScript pour la structure, le style et les interactions.
+
+PS: si jamais quelqu'un veut m'aider il est le bienvenu 😊
