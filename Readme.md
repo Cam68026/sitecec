@@ -4,22 +4,12 @@ Bienvenue sur le dépôt GitHub de notre site internet conçu dans le cadre du c
 🌟 Fonctionnalités principales
 Page d’accueil interactive :
 
-Effets d'animation et transitions dynamiques.
-Présentation visuelle immersive pour capter l’attention.
-Portfolio technique :
-
-Processus de conception et documentation technique.
-
 Page des sponsors :
 
 Mise en valeur de nos partenaires et sponsors avec leur logo.
 Galerie photo avec effet lightbox :
 
 Visualisation en plein écran des images et des moments marquants.
-
-Compte à rebours dynamique :
-
-Affiche le temps restant avant notre prochaine course ou événement clé.
 
 Fiche d’équipe détaillée :
 
