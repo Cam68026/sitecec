@@ -886,14 +886,6 @@ footer .raccourcis span {
     }
 }
 
-footer div#version {
-    display: flex;
-    position: absolute;
-    bottom: 0;
-    margin-top: 5px;
-    justify-content: center;
-}
-
 @media (max-width: 500px) {
     nav div {
         padding: 10px;
