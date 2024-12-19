@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const aperçuArticle = document.getElementById("aperçu-article");
     const actualitesSection = document.getElementById("actualites");
 
-    const githubToken = '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'; // Remplacez par votre token GitHub
+    const githubToken = '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'; // Remplacez par votre token GitHub
     const githubOwner = 'Cam68026'; // Remplacez par votre nom d'utilisateur GitHub
     const githubRepo = 'sitecec'; // Remplacez par le nom du dépôt
     const githubBranch = 'main'; // Branche où vous souhaitez travailler
