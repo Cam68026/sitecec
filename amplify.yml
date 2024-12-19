@@ -4,7 +4,6 @@ frontend:
     preBuild:
       commands:
         - echo "Installing dependencies..."
-        - python scripts/version_calculator.py  # Génère le fichier version.txt
     build:
       commands:
         - echo "Building the site..."
@@ -12,4 +11,3 @@ frontend:
     baseDirectory: v2
     files:
       - '**/*'
-      - ../version.txt  # Assure que version.txt est inclus
